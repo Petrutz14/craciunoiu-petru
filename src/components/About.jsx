@@ -4,15 +4,15 @@ import { CheckCircle2 } from 'lucide-react';
 
 const stats = [
   { value: '3+', label: 'Years Experience' },
-  { value: '40+', label: 'Projects Delivered' },
-  { value: '25+', label: 'Happy Clients' },
-  { value: '100%', label: 'Client Satisfaction' },
+  { value: '100', label: 'Vercel Speed' },
+  { value: '5+', label: 'Happy Clients' },
+  { value: 'Over 99%', label: 'Lighthouse Score' },
 ];
 
 const techStack = [
-  'React', 'Next.js', 'TypeScript', 'Node.js',
-  'Tailwind CSS', 'PostgreSQL', 'MongoDB', 'GraphQL',
-  'Framer Motion', 'Stripe', 'Vercel', 'Docker',
+  'React', 'TypeScript', 'Node.js',
+  'Tailwind CSS', 'PostgreSQL', 'MongoDB',
+  'Framer Motion', 'Vercel', 'Docker', "JWT/RBA"
 ];
 
 const highlights = [
@@ -56,8 +56,8 @@ export default function About() {
               transition={{ delay: 0.2 }}
               className="text-slate-400 text-base leading-relaxed mb-5"
             >
-              I'm a passionate freelance web developer based in Romania, specializing in building 
-              fast, beautiful, and functional websites. With 3+ years of experience, I've helped 
+              I'm a passionate freelance web developer based in Romania, specializing in building
+              fast, beautiful, and functional websites. With 3+ years of experience, I've helped
               startups and businesses launch and scale their online presence.
             </motion.p>
             <motion.p
@@ -66,7 +66,7 @@ export default function About() {
               transition={{ delay: 0.3 }}
               className="text-slate-400 text-base leading-relaxed mb-8"
             >
-              I believe great web development is about more than just writing code — it's about 
+              I believe great web development is about more than just writing code — it's about
               understanding your business goals and delivering a product that actually drives results.
             </motion.p>
 
