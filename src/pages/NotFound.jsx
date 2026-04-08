@@ -7,6 +7,7 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center px-6 bg-[#131313] relative overflow-hidden">
       <Helmet>
         <title>404 | Page Not Found</title>
+        <link rel="canonical" href="https://yourportfolio.com/404" />
         <meta name="robots" content="noindex" />
       </Helmet>
 

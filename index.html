@@ -4,15 +4,28 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Freelance web developer crafting fast, modern, and beautiful websites. Landing pages, web apps, e-commerce — let's build something great." />
-    <meta property="og:title" content="DevForge — Freelance Web Development" />
-    <meta property="og:description" content="Building Modern Web Applications that Scale." />
-    <title>DevForge — Freelance Web Developer</title>
+    
+    {/* Resource Hinting for Speed */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    
+    {/* Font Optimization */}
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700;800;900&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    </noscript>
+
+    {/* Mobile & PWA Optimization */}
+    <meta name="theme-color" content="#131313" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <title>Craciunoiu Petru | Freelance Web Developer</title>
   </head>
-  <body>
+  <body className="bg-[#131313]">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
