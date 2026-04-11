@@ -9,7 +9,7 @@ const offerings = [
   },
   {
     icon: 'store',
-    title: 'Hospitality & Local Biz',
+    title: 'Hospitality & Local Businesses',
     desc: 'Restaurants, bars, cafes — online reservations, menus, social links, Google Maps, all designed to drive foot traffic.',
   },
   {
