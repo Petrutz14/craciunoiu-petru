@@ -8,7 +8,7 @@ export default function Footer() {
     { label: 'Email', href: 'mailto:petru.craciunoiu@gmail.com' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/crăciunoiu-petru' },
     { label: 'GitHub', href: 'https://github.com/Petrutz14' },
-    { label: 'Resume', href: 'onstruiesc Site-uri Care Funcționează pentru Afacerea Ta' },
+    { label: 'Resume', href: 'https://www.linkedin.com/in/crăciunoiu-petru/overlay/1776094321950/single-media-viewer/?profileId=ACoAADA8L8YB4e4-lO5n7gBzunZtp6e8bArWweY' },
   ];
 
   return (
