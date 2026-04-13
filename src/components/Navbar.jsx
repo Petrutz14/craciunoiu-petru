@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const navLinks = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'Services', href: '#services' },
-  { label: 'Contact', href: '#contact-form' },
+  { key: 'projects', href: '#projects' },
+  { key: 'services', href: '#services' },
+  { key: 'contact', href: '#contact-form' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === 'en' ? 'ro' : 'en');
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -35,31 +41,42 @@ export default function Navbar() {
           className="text-lg md:text-xl font-black tracking-tighter text-[#e5e2e1] hover:text-[#0066FF] transition-colors"
           style={{ fontFamily: 'Manrope, sans-serif' }}
         >
-          Craciunoiu Petru
+          {t('navbar.logo')}
         </a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
-              key={link.label}
+              key={link.key}
               href={link.href}
-              onClick={() => setActive(link.label)}
+              onClick={() => setActive(link.key)}
               className={`font-manrope text-sm tracking-wide uppercase font-bold transition-colors ${
-                active === link.label
+                active === link.key
                   ? 'text-[#0066FF] border-b-2 border-[#0066FF] pb-1'
                   : 'text-[#e5e2e1] hover:text-[#0066FF]'
               }`}
             >
-              {link.label}
+              {t(`navbar.${link.key}`)}
             </a>
           ))}
           <a
             href="#contact"
             className="btn-primary px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide uppercase hover:scale-95 transition-all duration-300 shadow-lg shadow-[#0066ff]/20"
           >
-            Work with Me
+            {t('navbar.work_with_me')}
           </a>
+          <div 
+            onClick={toggleLanguage}
+            className="flex items-center bg-[#1c1b1b] p-1 rounded-full border border-white/5 cursor-pointer ml-2 hover:border-white/10 transition-colors"
+          >
+            <div className={`px-2.5 py-1 rounded-full text-[10px] font-black transition-all ${i18n.language === 'en' ? 'bg-[#0066ff] text-white shadow-md shadow-[#0066ff]/20' : 'text-[#c2c6d8] hover:text-white'}`}>
+              EN
+            </div>
+            <div className={`px-2.5 py-1 rounded-full text-[10px] font-black transition-all ${i18n.language === 'ro' ? 'bg-[#0066ff] text-white shadow-md shadow-[#0066ff]/20' : 'text-[#c2c6d8] hover:text-white'}`}>
+              RO
+            </div>
+          </div>
         </div>
 
         {/* Mobile Toggle - Perfectly symmetric right-alignment */}
@@ -90,12 +107,12 @@ export default function Navbar() {
             <div className="px-8 py-8 flex flex-col gap-8">
               {navLinks.map((link) => (
                 <a
-                  key={link.label}
+                  key={link.key}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className="text-center text-lg font-black uppercase tracking-[0.1em] text-[#e5e2e1] hover:text-[#0066FF] transition-colors"
                 >
-                  {link.label}
+                  {t(`navbar.${link.key}`)}
                 </a>
               ))}
               <a
@@ -103,8 +120,24 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="btn-primary px-6 py-4 rounded-xl font-black text-sm uppercase tracking-widest text-center shadow-lg shadow-[#0066ff]/10"
               >
-                Work with Me
+                {t('navbar.work_with_me')}
               </a>
+              <div className="flex justify-center mt-2">
+                <div 
+                  onClick={() => {
+                    toggleLanguage();
+                    setMenuOpen(false);
+                  }}
+                  className="flex items-center bg-[#1c1b1b] p-1.5 rounded-full border border-white/5 cursor-pointer"
+                >
+                  <div className={`px-6 py-2.5 rounded-full text-xs tracking-widest font-black transition-all ${i18n.language === 'en' ? 'bg-[#0066ff] text-white shadow-lg shadow-[#0066ff]/30' : 'text-[#c2c6d8]'}`}>
+                    EN
+                  </div>
+                  <div className={`px-6 py-2.5 rounded-full text-xs tracking-widest font-black transition-all ${i18n.language === 'ro' ? 'bg-[#0066ff] text-white shadow-lg shadow-[#0066ff]/30' : 'text-[#c2c6d8]'}`}>
+                    RO
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         )}

@@ -1,11 +1,14 @@
+import { useTranslation } from 'react-i18next';
+
 export default function Footer() {
+  const { t } = useTranslation();
   const year = new Date().getFullYear();
 
   const links = [
     { label: 'Email', href: 'mailto:petru.craciunoiu@gmail.com' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/crăciunoiu-petru' },
     { label: 'GitHub', href: 'https://github.com/Petrutz14' },
-    { label: 'Resume', href: 'https://www.linkedin.com/in/crăciunoiu-petru/overlay/1773396921576/single-media-viewer/?profileId=ACoAADA8L8YB4e4-lO5n7gBzunZtp6e8bArWweY' },
+    { label: 'Resume', href: 'onstruiesc Site-uri Care Funcționează pentru Afacerea Ta' },
   ];
 
   return (
@@ -20,7 +23,7 @@ export default function Footer() {
             Craciunoiu Petru
           </div>
           <div className="text-[10px] font-medium text-[#c2c6d8] uppercase tracking-widest opacity-60">
-            © {year} All Rights Reserved
+            © {year} {t('footer.rights_reserved')}
           </div>
         </div>
 
@@ -43,7 +46,7 @@ export default function Footer() {
         {/* Status */}
         <div className="flex items-center gap-2 text-[#c2c6d8] text-[9px] font-bold uppercase tracking-[0.2em] opacity-80">
           <span className="w-1.5 h-1.5 rounded-full bg-[#0066ff] animate-pulse block shadow-[0_0_8px_rgba(0,102,255,0.6)]" />
-          System Status: Online
+          {t('footer.system_status')}
         </div>
       </div>
     </footer>

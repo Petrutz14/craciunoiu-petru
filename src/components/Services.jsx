@@ -1,62 +1,64 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-
-const offerings = [
-  {
-    icon: 'globe',
-    title: 'Business Websites',
-    desc: 'Professional presentation sites for law firms, medical offices, service companies, built for speed, SEO, and client trust.',
-  },
-  {
-    icon: 'store',
-    title: 'Hospitality & Local Businesses',
-    desc: 'Restaurants, bars, cafes, online reservations, menus, social links, Google Maps, all designed to drive foot traffic.',
-  },
-  {
-    icon: 'code',
-    title: 'Web Applications',
-    desc: 'Full-stack apps with React frontends, Node.js or Spring backends, PostgreSQL or MongoDB databases.',
-  },
-  {
-    icon: 'lightning',
-    title: 'Performance & SEO',
-    desc: 'Speed audits, Core Web Vitals, structured data (Schema.org), and technical SEO to rank higher and load faster.',
-  },
-];
-
-const checks = [
-  'Clean, production-ready code',
-  'Mobile-first responsive design',
-  'Full SEO + structured data',
-  'Fast delivery, clear communication',
-];
-
-function IconComp({ name }) {
-  const icons = {
-    globe: <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />,
-    store: <><path d="M20 4H4v2l16 .01V4zM4 20h16v-2H4v2zM4 14h16v-2H4v2z" /><path d="M4 8v2h12V8H4zm8 6v2h-2v-2h2z" /></>,
-    code: <><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></>,
-    lightning: <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />,
-  };
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill={name === 'globe' || name === 'store' ? 'currentColor' : 'none'}
-      stroke={name === 'globe' || name === 'store' ? 'none' : 'currentColor'} strokeWidth="2.5" strokeLinecap="round">
-      {icons[name]}
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0066ff" strokeWidth="3">
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  );
-}
+import { useTranslation } from 'react-i18next';
 
 export default function Services() {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-60px' });
+
+  const offerings = [
+    {
+      icon: 'globe',
+      title: t('services.service_1_title'),
+      desc: t('services.service_1_desc'),
+    },
+    {
+      icon: 'store',
+      title: t('services.service_2_title'),
+      desc: t('services.service_2_desc'),
+    },
+    {
+      icon: 'code',
+      title: t('services.service_3_title'),
+      desc: t('services.service_3_desc'),
+    },
+    {
+      icon: 'lightning',
+      title: t('services.service_4_title'),
+      desc: t('services.service_4_desc'),
+    },
+  ];
+
+  const checks = [
+    t('services.check_1'),
+    t('services.check_2'),
+    t('services.check_3'),
+    t('services.check_4'),
+  ];
+
+  function IconComp({ name }) {
+    const icons = {
+      globe: <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />,
+      store: <><path d="M20 4H4v2l16 .01V4zM4 20h16v-2H4v2zM4 14h16v-2H4v2z" /><path d="M4 8v2h12V8H4zm8 6v2h-2v-2h2z" /></>,
+      code: <><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></>,
+      lightning: <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />,
+    };
+    return (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill={name === 'globe' || name === 'store' ? 'currentColor' : 'none'}
+        stroke={name === 'globe' || name === 'store' ? 'none' : 'currentColor'} strokeWidth="2.5" strokeLinecap="round">
+        {icons[name]}
+      </svg>
+    );
+  }
+
+  function CheckIcon() {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0066ff" strokeWidth="3">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    );
+  }
 
   return (
     <section id="services" className="py-24 px-6 md:px-8 bg-[#1c1b1b]" ref={ref}>
@@ -69,7 +71,7 @@ export default function Services() {
               animate={isInView ? { opacity: 1 } : {}}
               className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] font-black text-[#0066ff] block mb-4"
             >
-              What I Do
+              {t('services.what_i_do')}
             </motion.span>
             <motion.h3
               initial={{ opacity: 0, y: 20 }}
@@ -78,8 +80,8 @@ export default function Services() {
               className="text-4xl md:text-5xl font-black tracking-tighter text-[#e5e2e1]"
               style={{ fontFamily: 'Manrope, sans-serif' }}
             >
-              Built with{' '}
-              <span className="text-[#0066FF]">Precision</span>
+              {t('services.heading_1')}{' '}
+              <span className="text-[#0066FF]">{t('services.heading_2')}</span>
             </motion.h3>
           </div>
           <motion.p
@@ -88,8 +90,7 @@ export default function Services() {
             transition={{ delay: 0.2 }}
             className="max-w-md text-[#c2c6d8] text-base md:text-lg leading-relaxed opacity-80"
           >
-            Every project starts with understanding your business — then delivering
-            something that actually drives results.
+            {t('services.sub')}
           </motion.p>
         </div>
 
@@ -132,7 +133,7 @@ export default function Services() {
                 Over 99%
               </div>
               <p className="text-[#e5e2e1] font-bold uppercase tracking-[0.18em] text-[10px] md:text-[11px] mb-8 text-center md:text-left">
-                Lighthouse Scores
+                {t('services.scores_text')}
               </p>
               <div className="space-y-4 md:space-y-5">
                 {checks.map((item, i) => (
@@ -157,7 +158,7 @@ export default function Services() {
                   href="#contact"
                   className="btn-primary block text-center px-6 py-4 rounded-xl font-extrabold text-sm uppercase tracking-[0.15em] transition-all hover:shadow-lg hover:shadow-[#0066ff]/20"
                 >
-                  Start a Project
+                  {t('services.btn_start')}
                 </a>
               </div>
             </motion.div>

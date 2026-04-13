@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -7,6 +8,8 @@ const fadeUp = (delay = 0) => ({
 });
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="home"
@@ -28,7 +31,7 @@ export default function Hero() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2a2a2a] ghost-border mb-8 md:mb-10">
             <span className="w-2 h-2 rounded-full bg-[#0066ff] animate-pulse block" />
             <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.22em] text-[#c2c6d8]">
-              Available for New Projects
+              {t('hero.badge')}
             </span>
           </div>
         </motion.div>
@@ -36,12 +39,12 @@ export default function Hero() {
         {/* H1 - Centered on mobile */}
         <motion.h1
           {...fadeUp(0.2)}
-          className="text-4xl sm:text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tighter leading-[0.95] md:leading-[0.93] text-[#e5e2e1] max-w-5xl mb-8 md:mb-10 pr-0 md:pr-4"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] xl:text-[6.5rem] font-black tracking-tighter leading-[1.05] md:leading-[1] text-[#e5e2e1] max-w-5xl mb-8 md:mb-10 pr-0 md:pr-4"
           style={{ fontFamily: 'Manrope, sans-serif' }}
         >
-          I Build Sites{' '}
-          <span className="text-[#0066FF]">That Work</span>{' '}
-          for Your Business
+          {t('hero.h1_1')}{' '}
+          <span className="text-[#0066FF]">{t('hero.h1_2')}</span>{' '}
+          {t('hero.h1_3')}
         </motion.h1>
 
         {/* Sub - Centered on mobile */}
@@ -49,9 +52,7 @@ export default function Hero() {
           {...fadeUp(0.32)}
           className="text-base md:text-2xl text-[#c2c6d8] max-w-2xl font-medium leading-relaxed mb-10 md:mb-14 px-0 md:px-0 opacity-90 mx-auto md:mx-0"
         >
-          Freelance web developer from Romania — crafting fast, modern websites
-          for businesses, restaurants, legal firms, and startups. React, Tailwind,
-          Supabase &amp; more.
+          {t('hero.sub')}
         </motion.p>
 
         {/* CTA row - Centered on mobile */}
@@ -60,7 +61,7 @@ export default function Hero() {
             href="#projects"
             className="btn-primary group flex items-center justify-center gap-3 px-10 py-5 rounded-xl font-extrabold text-lg transition-all duration-300 hover:-translate-y-[2px] hover:shadow-2xl hover:shadow-[#0066ff]/20"
           >
-            View My Work
+            {t('hero.btn_work')}
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
               className="group-hover:translate-y-0.5 transition-transform">
               <line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" />
@@ -70,7 +71,7 @@ export default function Hero() {
             href="#contact-form"
             className="ghost-border group flex items-center justify-center gap-3 px-10 py-5 rounded-xl font-extrabold text-lg text-[#e5e2e1] transition-all duration-300 hover:bg-[#1c1b1b]"
           >
-            Let's Talk
+            {t('hero.btn_talk')}
           </a>
 
           {/* Stats - Centered on mobile */}

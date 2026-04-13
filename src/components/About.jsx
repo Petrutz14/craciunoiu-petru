@@ -1,30 +1,32 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
-
-const stats = [
-  { value: '3+', label: 'Years Experience' },
-  { value: '100', label: 'Vercel Speed' },
-  { value: '5+', label: 'Happy Clients' },
-  { value: 'Over 99%', label: 'Lighthouse Score' },
-];
-
-const techStack = [
-  'React', 'TypeScript', 'Node.js',
-  'Tailwind CSS', 'PostgreSQL', 'MongoDB',
-  'Framer Motion', 'Vercel', 'Docker', "JWT/RBA"
-];
-
-const highlights = [
-  'Clean, maintainable code with best practices',
-  'On-time delivery, every time',
-  'Clear communication throughout the project',
-  'Post-launch support & maintenance',
-];
+import { useTranslation } from 'react-i18next';
 
 export default function About() {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
+
+  const techStack = [
+    'React', 'TypeScript', 'Node.js',
+    'Tailwind CSS', 'PostgreSQL', 'MongoDB',
+    'Framer Motion', 'Vercel', 'Docker', "JWT/RBA"
+  ];
+
+  const stats = [
+    { value: '3+', label: t('about.years_experience') },
+    { value: '100', label: t('about.vercel_speed') },
+    { value: '5+', label: t('about.happy_clients') },
+    { value: 'Over 99%', label: t('about.lighthouse_score') },
+  ];
+
+  const highlights = [
+    t('about.highlight_1'),
+    t('about.highlight_2'),
+    t('about.highlight_3'),
+    t('about.highlight_4'),
+  ];
 
   return (
     <section id="about" className="py-28 relative">
@@ -40,7 +42,7 @@ export default function About() {
               animate={isInView ? { opacity: 1 } : {}}
               className="inline-block text-blue-400 text-sm font-semibold uppercase tracking-widest mb-4"
             >
-              About Me
+              {t('about.about_me')}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -48,7 +50,7 @@ export default function About() {
               transition={{ delay: 0.1 }}
               className="font-grotesk text-4xl md:text-5xl font-bold text-white mb-6"
             >
-              Crafting Digital <span className="gradient-text">Experiences</span>
+              {t('about.heading_1')} <span className="gradient-text">{t('about.heading_2')}</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -56,9 +58,7 @@ export default function About() {
               transition={{ delay: 0.2 }}
               className="text-slate-400 text-base leading-relaxed mb-5"
             >
-              I'm a passionate freelance web developer based in Romania, specializing in building
-              fast, beautiful, and functional websites. With 3+ years of experience, I've helped
-              a lot of businesses launch and scale their online presence.
+              {t('about.para_1')}
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export default function About() {
               transition={{ delay: 0.3 }}
               className="text-slate-400 text-base leading-relaxed mb-8"
             >
-              I believe great web development is not just coding, is optimization and alligment with the brand.
+              {t('about.para_2')}
             </motion.p>
 
             {/* Highlights */}
@@ -91,7 +91,7 @@ export default function About() {
               transition={{ delay: 0.5 }}
               className="inline-flex px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30"
             >
-              Let's Work Together
+              {t('about.btn_work_together')}
             </motion.a>
           </div>
 
@@ -128,7 +128,7 @@ export default function About() {
               className="glass rounded-2xl p-7"
             >
               <h4 className="font-grotesk font-semibold text-white mb-5 text-sm uppercase tracking-widest">
-                Tech Stack
+                {t('about.tech_stack')}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {techStack.map((tech, i) => (

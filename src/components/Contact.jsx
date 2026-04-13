@@ -1,60 +1,62 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-
-const contactItems = [
-  {
-    id: 'email',
-    svgPath: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z',
-    svgPath2: 'M22 6l-10 7L2 6',
-    label: 'Email Me',
-    value: 'petru.craciunoiu@gmail.com',
-    href: 'mailto:petru.craciunoiu@gmail.com',
-  },
-  {
-    id: 'location',
-    svgPath: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z',
-    svgPath2: 'M12 10a2 2 0 100-4 2 2 0 000 4',
-    label: 'Location',
-    value: 'Timisoara, Romania — Remote',
-    href: '#',
-  },
-];
-
-function FloatingInput({ id, label, type = 'text', isTextarea = false }) {
-  return (
-    <div className="group relative">
-      {isTextarea ? (
-        <textarea
-          id={id} name={id} rows={4} required placeholder=" "
-          className="input-underline block py-4 px-0 text-lg md:text-xl peer resize-none"
-        />
-      ) : (
-        <input
-          id={id} name={id} type={type} required placeholder=" "
-          className="input-underline block py-4 px-0 text-lg md:text-xl peer"
-        />
-      )}
-      <label
-        htmlFor={id}
-        className="
-          absolute top-4 left-0 text-[#c2c6d8]/50 text-xl font-medium
-          transition-all duration-300 pointer-events-none
-          peer-focus:-top-5 peer-focus:text-[11px] peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-bold peer-focus:text-[#0066ff]
-          peer-[:not(:placeholder-shown)]:-top-5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:font-bold peer-[:not(:placeholder-shown)]:text-[#0066ff]
-        "
-      >
-        {label}
-      </label>
-    </div>
-  );
-}
+import { useTranslation } from 'react-i18next';
 
 export default function Contact() {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-60px' });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState(null);
+
+  const contactItems = [
+    {
+      id: 'email',
+      svgPath: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z',
+      svgPath2: 'M22 6l-10 7L2 6',
+      label: t('contact.item_email'),
+      value: 'petru.craciunoiu@gmail.com',
+      href: 'mailto:petru.craciunoiu@gmail.com',
+    },
+    {
+      id: 'location',
+      svgPath: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z',
+      svgPath2: 'M12 10a2 2 0 100-4 2 2 0 000 4',
+      label: t('contact.item_location'),
+      value: t('contact.item_location_val'),
+      href: '#',
+    },
+  ];
+
+  function FloatingInput({ id, label, type = 'text', isTextarea = false }) {
+    return (
+      <div className="group relative">
+        {isTextarea ? (
+          <textarea
+            id={id} name={id} rows={4} required placeholder=" "
+            className="input-underline block py-4 px-0 text-lg md:text-xl peer resize-none"
+          />
+        ) : (
+          <input
+            id={id} name={id} type={type} required placeholder=" "
+            className="input-underline block py-4 px-0 text-lg md:text-xl peer"
+          />
+        )}
+        <label
+          htmlFor={id}
+          className="
+            absolute top-4 left-0 text-[#c2c6d8]/50 text-xl font-medium
+            transition-all duration-300 pointer-events-none
+            peer-focus:-top-5 peer-focus:text-[11px] peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-bold peer-focus:text-[#0066ff]
+            peer-[:not(:placeholder-shown)]:-top-5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-widest peer-[:not(:placeholder-shown)]:font-bold peer-[:not(:placeholder-shown)]:text-[#0066ff]
+          "
+        >
+          {label}
+        </label>
+      </div>
+    );
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -107,7 +109,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="text-[10px] md:text-[11px] uppercase tracking-[0.5em] font-black text-[#0066ff] block mb-8"
           >
-            Ready to Build?
+            {t('contact.ready_to_build')}
           </motion.span>
           <motion.h3
             initial={{ opacity: 0, y: 24 }}
@@ -117,7 +119,7 @@ export default function Contact() {
             className="text-4xl md:text-7xl font-black tracking-tighter text-[#e5e2e1] mb-5 leading-tight"
             style={{ fontFamily: 'Manrope, sans-serif' }}
           >
-            Let's create something modern.
+            {t('contact.heading_1')}
           </motion.h3>
           <motion.p
             initial={{ opacity: 0 }}
@@ -126,7 +128,7 @@ export default function Contact() {
             transition={{ delay: 0.2 }}
             className="text-[#c2c6d8] text-base md:text-xl mb-12 max-w-xl mx-auto md:mx-0 opacity-80"
           >
-            Whether you need a business site, a web app, or want to improve your existing one — I'm here.
+            {t('contact.sub_1')}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -139,13 +141,13 @@ export default function Contact() {
               href="#contact-form"
               className="btn-primary px-10 py-5 rounded-xl font-black text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[#0066ff]/20 text-center"
             >
-              Start a Project
+              {t('contact.btn_start_project')}
             </a>
             <a
               href="mailto:petru.craciunoiu@gmail.com"
               className="ghost-border text-[#e5e2e1] px-10 py-5 rounded-xl font-black text-lg transition-all duration-300 hover:bg-[#1c1b1b] text-center"
             >
-              Send an Email
+              {t('contact.btn_send_email')}
             </a>
           </motion.div>
         </div>
@@ -161,7 +163,7 @@ export default function Contact() {
               animate={isInView ? { opacity: 1 } : {}}
               className="inline-block px-3 py-1 bg-[#2a2a2a] text-[#b3c5ff] font-bold text-[10px] tracking-[0.22em] uppercase rounded-full mb-6 w-fit"
             >
-              Get in Touch
+              {t('contact.get_in_touch')}
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
@@ -170,7 +172,7 @@ export default function Contact() {
               className="text-5xl md:text-7xl font-extrabold tracking-tighter leading-[0.95] text-[#e5e2e1] mb-8"
               style={{ fontFamily: 'Manrope, sans-serif' }}
             >
-              Let's{' '}<span className="text-[#0066ff]">Work</span>{' '}Together.
+              {t('contact.heading_2_1')}{' '}<span className="text-[#0066ff]">{t('contact.heading_2_2')}</span>{' '}{t('contact.heading_2_3')}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -178,8 +180,7 @@ export default function Contact() {
               transition={{ delay: 0.2 }}
               className="text-[#c2c6d8] text-base md:text-lg leading-relaxed max-w-md mb-14 opacity-80"
             >
-              Have a specific vision in mind? Or just starting to explore possibilities?
-              Let's discuss your project — response within 24 hours.
+              {t('contact.sub_2')}
             </motion.p>
 
             <motion.div
@@ -234,21 +235,21 @@ export default function Contact() {
                     </svg>
                   </div>
                   <h4 className="text-2xl font-black text-[#e5e2e1] mb-3" style={{ fontFamily: 'Manrope' }}>
-                    Inquiry Sent!
+                    {t('contact.form_sent_title')}
                   </h4>
-                  <p className="text-[#c2c6d8] opacity-80">I'll get back to you within 24 hours.</p>
+                  <p className="text-[#c2c6d8] opacity-80">{t('contact.form_sent_desc')}</p>
                   <button 
                     onClick={() => setSent(false)}
                     className="mt-8 text-[10px] uppercase tracking-widest font-bold text-[#0066ff] hover:text-white transition-colors"
                   >
-                    Send another message
+                    {t('contact.form_sent_btn')}
                   </button>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="relative z-10 space-y-8 md:space-y-10">
-                  <FloatingInput id="name" label="Your Name" />
-                  <FloatingInput id="email" label="Email Address" type="email" />
-                  <FloatingInput id="message" label="Tell me about your project" isTextarea />
+                  <FloatingInput id="name" label={t('contact.form_name')} />
+                  <FloatingInput id="email" label={t('contact.form_email')} type="email" />
+                  <FloatingInput id="message" label={t('contact.form_message')} isTextarea />
                   
                   {error && (
                     <motion.div 
@@ -272,11 +273,11 @@ export default function Contact() {
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
                           </svg>
-                          Sending...
+                          {t('contact.form_sending')}
                         </span>
                       ) : (
                         <>
-                          Send Inquiry
+                          {t('contact.form_btn')}
                           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
                                className="group-hover:translate-x-1 transition-transform">
                             <line x1="5" y1="12" x2="19" y2="12"/>

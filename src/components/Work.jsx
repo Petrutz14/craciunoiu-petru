@@ -1,34 +1,8 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
-const projects = [
-  {
-    id: 'bej',
-    span: 'lg:col-span-7',
-    aspect: 'aspect-[16/9]',
-    category: 'Legal Services',
-    stack: 'React • Tailwind • Vercel',
-    title: 'B.E.J. Ifrim Remus',
-    desc: 'Professional presentation website for a bailiff office. Built with full SEO optimization, structured data (Schema.org), and a trust-focused editorial design.',
-    url: 'https://bejifrimremus.ro',
-    gradient: 'from-[#003366]/40 via-[#001033]/60 to-[#0e0e0e]',
-    accentColor: '#0066ff', // Brighter blue for better contrast on mobile
-    large: true,
-  },
-  {
-    id: 'traian',
-    span: 'lg:col-span-5',
-    aspect: 'aspect-[4/3]',
-    category: 'Hospitality',
-    stack: 'React • Tailwind • Supabase • Vercel',
-    title: 'La Povești în Traian',
-    desc: 'Custom website for a café/bar featuring a bespoke Admin Panel built with Supabase for real-time menu and content management.',
-    url: 'https://la-povesti-in-traian.vercel.app',
-    gradient: 'from-[#664d00]/40 via-[#1a1200]/60 to-[#0e0e0e]',
-    accentColor: '#d4af37', // Gold
-    large: false,
-  },
-];
+
 
 function ArrowIcon({ size = 16 }) {
   return (
@@ -39,6 +13,7 @@ function ArrowIcon({ size = 16 }) {
 }
 
 function ProjectCard({ project, index }) {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-60px' });
 
@@ -70,7 +45,7 @@ function ProjectCard({ project, index }) {
         {/* Hover overlay hint */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
           <div className="px-6 py-3 rounded-full bg-white text-black font-black text-xs uppercase tracking-widest shadow-2xl flex items-center gap-2">
-            Launch Site <ArrowIcon size={14} />
+            {t('work.launch_site')} <ArrowIcon size={14} />
           </div>
         </div>
 
@@ -108,7 +83,7 @@ function ProjectCard({ project, index }) {
             rel="noopener noreferrer"
             className="flex items-center gap-2 font-black uppercase text-[10px] tracking-[0.2em] text-[#0066ff] hover:text-white transition-all"
           >
-            Visit Live Site <ArrowIcon />
+            {t('work.visit_live_site')} <ArrowIcon />
           </a>
         </div>
       </div>
@@ -117,8 +92,38 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Work() {
+  const { t } = useTranslation();
   const titleRef = useRef(null);
   const isInView = useInView(titleRef, { once: true });
+
+  const projects = [
+    {
+      id: 'bej',
+      span: 'lg:col-span-7',
+      aspect: 'aspect-[16/9]',
+      category: t('work.p1_category'),
+      stack: 'React • Tailwind • Vercel',
+      title: t('work.p1_title'),
+      desc: t('work.p1_desc'),
+      url: 'https://bejifrimremus.ro',
+      gradient: 'from-[#003366]/40 via-[#001033]/60 to-[#0e0e0e]',
+      accentColor: '#0066ff', // Brighter blue for better contrast on mobile
+      large: true,
+    },
+    {
+      id: 'traian',
+      span: 'lg:col-span-5',
+      aspect: 'aspect-[4/3]',
+      category: t('work.p2_category'),
+      stack: 'React • Tailwind • Supabase • Vercel',
+      title: t('work.p2_title'),
+      desc: t('work.p2_desc'),
+      url: 'https://la-povesti-in-traian.vercel.app',
+      gradient: 'from-[#664d00]/40 via-[#1a1200]/60 to-[#0e0e0e]',
+      accentColor: '#d4af37', // Gold
+      large: false,
+    },
+  ];
 
   return (
     <section id="projects" className="py-24 md:py-32 px-6 md:px-8 bg-[#131313]">
@@ -131,7 +136,7 @@ export default function Work() {
               animate={isInView ? { opacity: 1 } : {}}
               className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] font-black text-[#0066ff] block mb-4"
             >
-              Selected Works
+              {t('work.selected_works')}
             </motion.span>
             <motion.h3
               initial={{ opacity: 0, y: 20 }}
@@ -140,7 +145,7 @@ export default function Work() {
               className="text-4xl md:text-6xl font-black tracking-tighter text-[#e5e2e1]"
               style={{ fontFamily: 'Manrope, sans-serif' }}
             >
-              Live Projects
+              {t('work.heading')}
             </motion.h3>
           </div>
           <motion.p
@@ -149,8 +154,7 @@ export default function Work() {
             transition={{ delay: 0.2 }}
             className="max-w-md text-[#c2c6d8] text-base md:text-lg leading-relaxed opacity-80"
           >
-            Real websites, live in production, built for real clients across
-            different industries.
+            {t('work.sub')}
           </motion.p>
         </div>
 
@@ -170,15 +174,15 @@ export default function Work() {
         >
           {[
             {
-              label: 'Frontend',
+              label: t('work.frontend'),
               items: ['React', 'Next.js', 'TailwindCSS', 'Framer Motion'],
             },
             {
-              label: 'Backend & DB',
+              label: t('work.backend_db'),
               items: ['Node.js / Express', 'Spring Boot', 'PostgreSQL', 'MongoDB'],
             },
             {
-              label: 'Platforms & Tools',
+              label: t('work.platforms_tools'),
               items: ['Supabase', 'Vercel', 'MERN Stack', 'REST APIs'],
             },
           ].map((group) => (
