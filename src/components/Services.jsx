@@ -5,12 +5,12 @@ const offerings = [
   {
     icon: 'globe',
     title: 'Business Websites',
-    desc: 'Professional presentation sites for law firms, medical offices, service companies — built for speed, SEO, and client trust.',
+    desc: 'Professional presentation sites for law firms, medical offices, service companies, built for speed, SEO, and client trust.',
   },
   {
     icon: 'store',
     title: 'Hospitality & Local Businesses',
-    desc: 'Restaurants, bars, cafes — online reservations, menus, social links, Google Maps, all designed to drive foot traffic.',
+    desc: 'Restaurants, bars, cafes, online reservations, menus, social links, Google Maps, all designed to drive foot traffic.',
   },
   {
     icon: 'code',

@@ -58,7 +58,7 @@ export default function About() {
             >
               I'm a passionate freelance web developer based in Romania, specializing in building
               fast, beautiful, and functional websites. With 3+ years of experience, I've helped
-              startups and businesses launch and scale their online presence.
+              a lot of businesses launch and scale their online presence.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -66,8 +66,7 @@ export default function About() {
               transition={{ delay: 0.3 }}
               className="text-slate-400 text-base leading-relaxed mb-8"
             >
-              I believe great web development is about more than just writing code — it's about
-              understanding your business goals and delivering a product that actually drives results.
+              I believe great web development is not just coding, is optimization and alligment with the brand.
             </motion.p>
 
             {/* Highlights */}

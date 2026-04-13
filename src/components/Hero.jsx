@@ -74,30 +74,11 @@ export default function Hero() {
           </a>
 
           {/* Stats - Centered on mobile */}
-          <div className="flex items-center justify-center md:justify-start gap-6 mt-6 sm:mt-0 sm:ml-4">
-            <div className="flex flex-col items-center md:items-start">
-              <span className="text-[#e5e2e1] font-bold text-lg">3+</span>
-              <span className="text-[#c2c6d8] text-[10px] md:text-[11px] uppercase tracking-tighter font-semibold">Years Exp.</span>
-            </div>
-            <div className="w-px h-8 bg-[#424656]/40" />
-            <div className="flex flex-col items-center md:items-start">
-              <span className="text-[#e5e2e1] font-bold text-lg">2+</span>
-              <span className="text-[#c2c6d8] text-[10px] md:text-[11px] uppercase tracking-tighter font-semibold">Live Projects</span>
-            </div>
-          </div>
+
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
-      >
-        <span className="text-[10px] uppercase tracking-widest text-[#c2c6d8] font-bold">Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-[#0066ff] to-transparent" />
-      </motion.div>
+
     </section>
   );
 }
